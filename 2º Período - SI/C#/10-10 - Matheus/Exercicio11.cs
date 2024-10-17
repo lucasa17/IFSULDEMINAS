@@ -1,25 +1,37 @@
 using System;
 
-class Exercicio11 {
+class Exercicio11{
     
-  static void Main() {
-      
-    Console.Write("Digite o texto criptografado: ");
+ 
+    static void textoDecodificado(string texto){
+        
+        string textoFinal = "";
     
+        int y = 0, z = 0;
+        
+    
+        for(int x = 0; x < texto.Length; x++){
+        
+            if(texto[x] != 'p' || (texto[x] == 'p' && texto[y+1] == 'p' && texto[z+2] == 'p')){
+                textoFinal += texto[x];
+                
+            }
+            
+        }
+        
+        Console.Write(textoFinal); 
+    }
+    
+    static void Main() {
+        
+    
+    
+    
+    Console.Write("Digite seu texto: ");
     string texto = Console.ReadLine();
     
-    string newText = "";
+    textoDecodificado(texto);
     
-    for(int x = 0; x < texto.Length; x++){
-        
-        int y = x+1;
-        int z = x+2;
-        if(texto[x] != 'p' || (texto[x] == 'p' && texto[y] == 'p' && texto[z] == 'p')){
-            newText += texto[x];
-        }
-    }
-    Console.Write("\n------------------------------\n\n");
-    Console.Write("Texto descriptografado: ");
-    Console.Write(newText);
+
   }
 }
