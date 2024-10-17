@@ -1,3 +1,9 @@
+/*Uma brincadeira que crianças adoram é se comunicar na língua do P,
+acrescentando pê antes de cada sílaba, como uma forma de código para dificultar que outras
+pessoas entendam a conversa (pê-va pê-mos pê-no pê-ci pê-ne pê-ma?). Jacy e Kátia adaptaram
+a língua do P para mensagens eletrônicas, acrescentando a letra P minúscula 'p' antes de cada
+letra das palavras de uma mensagem.*/
+
 using System;
 
 class Exercicio11{
