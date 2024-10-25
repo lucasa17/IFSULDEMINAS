@@ -6,16 +6,10 @@ namespace Matrizes
     {
 
 
-        public static int[,] makeMatriz(){
+        public static void makeMatriz(int[,] matriz){
 
-            Console.Write("Digite a Quantidade de linhas da matriz: ");
-            int linha = int.Parse(Console.ReadLine());
-
-            Console.Write("Digite a Quantidade de linhas da matriz: ");
-            int coluna = int.Parse(Console.ReadLine());
-
-
-            int[,] matriz = new int[linha, coluna];
+            int linha = matriz.GetLength(0);
+            int coluna = matriz.GetLength(1);
 
             for (int i = 0; i < linha; i++)
             {
@@ -24,33 +18,40 @@ namespace Matrizes
                 {
 
                     Console.Write("[" + i + "][" + j + "] = ");
-                    matriz[linha, coluna] = int.Parse(Console.ReadLine());
+                    matriz[i,j] = int.Parse(Console.ReadLine());
 
                 }
 
             }
 
-            return matriz;
         }
+        public static void makeMatriz(double[,] matriz)
+        {
 
-        public static int[,] randomMatriz(){ 
+            int linha = matriz.GetLength(0);
+            int coluna = matriz.GetLength(1);
 
-            volta:
-
-            Console.WriteLine("Obs: Máximo 100");
-
-            Console.Write("Digite a Quantidade de linhas da matriz: ");
-            int linha = int.Parse(Console.ReadLine());
-
-            Console.Write("Digite a Quantidade de linhas da matriz: ");
-            int coluna = int.Parse(Console.ReadLine());
-
-            if(linha > 100 || coluna > 100)
+            for (int i = 0; i < linha; i++)
             {
-                goto volta;
+
+                for (int j = 0; j < coluna; j++)
+                {
+
+                    Console.Write("[" + i + "][" + j + "] = ");
+                    matriz[i, j] = int.Parse(Console.ReadLine());
+
+                }
+
             }
 
-            int[,] matriz = new int[linha, coluna];
+        }
+
+
+        public static void randomMatriz(int[,] matriz)
+        {
+
+            int linha = matriz.GetLength(0);
+            int coluna = matriz.GetLength(1);
 
             Random random = new Random();
 
@@ -64,10 +65,31 @@ namespace Matrizes
                 }
 
             }
-
-            return matriz;
         }
-       public static void showMatriz(int[,] matriz)
+        public static void randomMatriz(double[,] matriz)
+        {
+
+            int linha = matriz.GetLength(0);
+            int coluna = matriz.GetLength(1);
+
+            Random random = new Random();
+
+            for (int i = 0; i < linha; i++)
+            {
+
+                for (int j = 0; j < coluna; j++)
+                {
+
+                    //Console.Write("["+i+"]["+j+"] = ");
+                    matriz[i, j] = random.Next(1, 10);
+
+                }
+
+            }
+        }
+
+
+        public static void showMatriz(int[,] matriz)
         {
             int cont = 0;
 
@@ -87,17 +109,43 @@ namespace Matrizes
 
                     }
 
-                    Console.Write(matriz[i, j] + "  ");
+                    Console.Write($"{matriz[i, j],3}  ");
 
                     cont++;
                 }
 
             }
+        }
+        public static void showMatriz(double[,] matriz)
+        {
+            int cont = 0;
 
+            int linha = matriz.GetLength(0);
+            int coluna = matriz.GetLength(1);
 
+            for (int i = 0; i < linha; i++)
+            {
 
+                for (int j = 0; j < coluna; j++)
+                {
 
+                    if (cont % coluna == 0)
+                    {
+
+                        Console.Write("\n");
+
+                    }
+
+                    Console.Write($"{matriz[i, j],3}  ");
+
+                    cont++;
+                }
+
+            }
         }
 
-        }
+
+
+
+    }
     }
