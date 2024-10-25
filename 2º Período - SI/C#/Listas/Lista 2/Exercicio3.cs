@@ -4,7 +4,8 @@ matriz.*/
 
 using System;
 using Matrizes;
-class Exercicio3{
+class Exercicio3
+{
 
     static void encontraMatriz(int[,] matriz)
     {
@@ -44,7 +45,25 @@ class Exercicio3{
 
         Console.WriteLine("Matriz");
 
-        int[,] matriz = bibliotecaMatriz.randomMatriz();
+            volta:
+
+                Console.WriteLine("Obs: Máximo 100");
+
+                Console.Write("Digite a Quantidade de linhas da matriz: ");
+                int linha = int.Parse(Console.ReadLine());
+
+                Console.Write("Digite a Quantidade de linhas da matriz: ");
+                int coluna = int.Parse(Console.ReadLine());
+
+                if (linha > 100 || coluna > 100)
+                {
+                    goto volta;
+
+                }
+
+        int[,] matriz = new int[linha, coluna];
+
+        bibliotecaMatriz.randomMatriz(matriz);
 
         encontraMatriz(matriz);
 
