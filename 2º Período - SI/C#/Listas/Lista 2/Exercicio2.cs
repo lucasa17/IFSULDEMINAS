@@ -5,7 +5,8 @@ using System;
 using Matrizes;
 
 
-class Exercicio2{
+class Exercicio2
+{
 
     static void menorMatriz(int[,] matriz)
     {
@@ -39,7 +40,25 @@ class Exercicio2{
 
         Console.WriteLine("Matriz");
 
-        int[,] matriz = bibliotecaMatriz.randomMatriz();
+    volta:
+
+        Console.WriteLine("Obs: Máximo 100");
+
+        Console.Write("Digite a Quantidade de linhas da matriz: ");
+        int linha = int.Parse(Console.ReadLine());
+
+        Console.Write("Digite a Quantidade de linhas da matriz: ");
+        int coluna = int.Parse(Console.ReadLine());
+
+        if (linha > 100 || coluna > 100)
+        {
+            goto volta;
+
+        }
+
+        int[,] matriz = new int[linha, coluna];
+
+        bibliotecaMatriz.randomMatriz(matriz);
 
         bibliotecaMatriz.showMatriz(matriz);
 
@@ -50,4 +69,3 @@ class Exercicio2{
 
 
 }
-
