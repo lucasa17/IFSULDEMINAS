@@ -35,11 +35,20 @@ namespace Matrizes
 
         public static int[,] randomMatriz(){ 
 
+            volta:
+
+            Console.WriteLine("Obs: Máximo 100");
+
             Console.Write("Digite a Quantidade de linhas da matriz: ");
             int linha = int.Parse(Console.ReadLine());
 
             Console.Write("Digite a Quantidade de linhas da matriz: ");
             int coluna = int.Parse(Console.ReadLine());
+
+            if(linha > 100 || coluna > 100)
+            {
+                goto volta;
+            }
 
             int[,] matriz = new int[linha, coluna];
 
