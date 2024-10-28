@@ -1,4 +1,4 @@
-/*Crie uma funC'C#o para calcular e apresentar a soma de 2 matrizes. *Verifique antes se elas sC#o de mesma
+/*Crie uma função para calcular e apresentar a soma de 2 matrizes. *Verifique antes se elas são de mesma
 ordem.*/
 
 using System;
