@@ -52,22 +52,15 @@ class Exercicio6
 
 			}
 		}
-		
+	
 	return matriz4;
 	}
 
 	static void AdicionaConstante(double[,] matriz, double constante)
 	{
-		int n = matriz.GetLength(0);
-		int m = matriz.GetLength(1);
-
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = 0; j < m; j++)
-			{
-				matriz[i, j] += constante;
-			}
-		}
+		
+		matriz[0,0] = constante;
+		
 	}
 
 
@@ -96,16 +89,18 @@ volta:
 
 		double[,] matriz1 = new double[linha, coluna];
 		double[,] matriz2 = new double[linha, coluna];
+		double[,] matriz3 = new double[linha, coluna];
+		double[,] matriz4 = new double[linha, coluna];
 
 
 		bibliotecaMatriz.randomMatriz(matriz1);
 		bibliotecaMatriz.randomMatriz(matriz2);
 
-
+    	bool condSoma = false;
+    	bool condSub = false;
 		bool cond = true;
 
 		while(cond == true) {
-
 
 			Console.WriteLine("\n------------------------------");
 
@@ -117,18 +112,22 @@ volta:
 
 			case 1:
 			
-				double[,] matriz3 = new double[linha, coluna];
-				
 				matriz3 = somaMatriz(matriz1, matriz2);
+				
+			    condSoma = true;
+			    
+			    Console.Clear();
 			
 			break;
 
 			case 2:
 
-		        double[,] matriz4 = new double[linha, coluna];
-		        
-				 matriz4 = subtraiMatriz(matriz1,matriz2);
+				matriz4 = subtraiMatriz(matriz1,matriz2);
 				
+				condSub = true;
+				
+				Console.Clear();
+
 			break;
 
 			case 3:
@@ -141,14 +140,74 @@ volta:
 
 				Console.WriteLine("Constante adicionada");
 			
+			    Console.Clear();
+			
 			break;
 
 			case 4:
-		        bibliotecaMatriz.showMatriz(matriz1);
-				Console.WriteLine();
-				
-				bibliotecaMatriz.showMatriz(matriz2);
-				Console.WriteLine();
+			
+			Console.Clear();
+			
+		        if(condSoma == true && condSub == true){
+			       
+			        Console.Write("\nMatriz 1:");
+    			    bibliotecaMatriz.showMatriz(matriz1);
+    				Console.WriteLine();
+    				
+    				Console.Write("\nMatriz 2:");
+    				bibliotecaMatriz.showMatriz(matriz2);
+    				Console.WriteLine();
+    				
+    				Console.Write("\nMatriz Soma:");
+    				bibliotecaMatriz.showMatriz(matriz3);
+    				Console.WriteLine();
+    				
+    				Console.Write("\nMatriz Subtraída:");
+    				bibliotecaMatriz.showMatriz(matriz4);
+    				Console.WriteLine();
+    				
+			    }
+			    else if(condSoma == true && condSub == false){
+			        
+			        Console.Write("\nMatriz 1:");
+    			    bibliotecaMatriz.showMatriz(matriz1);
+    				Console.WriteLine();
+    				
+    				Console.Write("\nMatriz 2:");
+    				bibliotecaMatriz.showMatriz(matriz2);
+    				Console.WriteLine();
+    				
+    				Console.Write("\nMatriz Soma:");
+    				bibliotecaMatriz.showMatriz(matriz3);
+    				Console.WriteLine();
+			 
+			    }
+				else if(condSoma == false && condSub == true){
+				    
+				    Console.Write("\nMatriz 1:");
+    			    bibliotecaMatriz.showMatriz(matriz1);
+    				Console.WriteLine();
+    				
+    				Console.Write("\nMatriz 2:");
+    				bibliotecaMatriz.showMatriz(matriz2);
+    				Console.WriteLine();
+    				
+    				Console.Write("\nMatriz Subtraída:");
+    				bibliotecaMatriz.showMatriz(matriz4);
+    				Console.WriteLine();
+    				
+				}
+				else{
+				    
+				    Console.Write("\nMatriz 1:");
+    			    bibliotecaMatriz.showMatriz(matriz1);
+    				Console.WriteLine();
+    				
+    				Console.Write("\nMatriz 2:");
+    				bibliotecaMatriz.showMatriz(matriz2);
+    				Console.WriteLine();
+    				
+				}
 			   
 			break;
 
@@ -159,7 +218,7 @@ volta:
 		    break;
 		    
 			}
-
+			
 		}
 
 
