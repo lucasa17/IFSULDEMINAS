@@ -14,11 +14,11 @@ class Exercicio8
         volta:
 
 		Console.WriteLine("\nDigite a quantidade de raios:");
-		Console.Write("Obs: Máximo 500000\n");
+		Console.Write("Obs: Máximo 500000 e Minimo 2\n");
 		
         int raios = int.Parse(Console.ReadLine());
 
-    		if (raios > 500000)
+    		if (raios < 2 || raios > 500000)
     		{
     			goto volta;
     
