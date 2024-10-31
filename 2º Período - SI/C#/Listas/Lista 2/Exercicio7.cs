@@ -8,7 +8,7 @@ using System;
 using Matrizes;
 
 
-class Exercicio6
+class Exercicio7
 {
 
 	static double[,] somaMatriz(double[,] matriz1, double[,] matriz2)
