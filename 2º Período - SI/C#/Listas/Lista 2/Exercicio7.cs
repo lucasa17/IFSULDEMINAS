@@ -11,219 +11,239 @@ using Matrizes;
 class Exercicio7
 {
 
-	static double[,] somaMatriz(double[,] matriz1, double[,] matriz2)
-	{
+    static double[,] somaMatriz(double[,] matriz1, double[,] matriz2)
+    {
 
-		int linha = matriz1.GetLength(0);
-		int coluna = matriz1.GetLength(1);
+        int linha = matriz1.GetLength(0);
+        int coluna = matriz1.GetLength(1);
 
-		double[,] matriz3 = new double[linha, coluna];
+        double[,] matriz3 = new double[linha, coluna];
 
-		for (int i = 0; i < linha; i++)
-		{
+        for (int i = 0; i < linha; i++)
+        {
 
-			for (int j = 0; j < coluna; j++)
-			{
+            for (int j = 0; j < coluna; j++)
+            {
 
-				matriz3[i,j] = matriz1[i,j] + matriz2[i,j];
+                matriz3[i, j] = matriz1[i, j] + matriz2[i, j];
 
-			}
-		}
+            }
+        }
 
-    return matriz3;
-	}
-	
-
-	static double[,] subtraiMatriz(double[,] matriz1, double[,] matriz2)
-	{
-
-		int linha = matriz1.GetLength(0);
-		int coluna = matriz1.GetLength(1);
-
-		double[,] matriz4 = new double[linha, coluna];
-
-		for (int i = 0; i < linha; i++)
-		{
-
-			for (int j = 0; j < coluna; j++)
-			{
-
-				matriz4[i,j] = matriz1[i,j] - matriz2[i,j];
-
-			}
-		}
-	
-	return matriz4;
-	}
-
-	static void AdicionaConstante(double[,] matriz, double constante)
-	{
-		
-		matriz[0,0] = constante;
-		
-	}
+        return matriz3;
+    }
 
 
-	static void Main()
-	{
+    static double[,] subtraiMatriz(double[,] matriz1, double[,] matriz2)
+    {
 
-		Console.WriteLine("Matriz");
+        int linha = matriz1.GetLength(0);
+        int coluna = matriz1.GetLength(1);
 
-volta:
+        double[,] matriz4 = new double[linha, coluna];
 
-		Console.WriteLine("\nDigite o tamanho para a soma de marizes:");
+        for (int i = 0; i < linha; i++)
+        {
 
-		Console.WriteLine("Obs: Máximo 100\n");
+            for (int j = 0; j < coluna; j++)
+            {
 
-		Console.Write("Digite a Quantidade de linhas da matriz: ");
-		int linha = int.Parse(Console.ReadLine());
+                matriz4[i, j] = matriz1[i, j] - matriz2[i, j];
 
-		Console.Write("Digite a Quantidade de linhas da matriz: ");
-		int coluna = int.Parse(Console.ReadLine());
+            }
+        }
 
-		if (linha > 100 || coluna > 100)
-		{
-			goto volta;
+        return matriz4;
+    }
 
-		}
+    static void AdicionaConstante(double[,] matriz, double constante)
+    {
 
-		double[,] matriz1 = new double[linha, coluna];
-		double[,] matriz2 = new double[linha, coluna];
-		double[,] matriz3 = new double[linha, coluna];
-		double[,] matriz4 = new double[linha, coluna];
+        int linha = matriz.GetLength(0);
+        int coluna = matriz.GetLength(1);
 
 
-		bibliotecaMatriz.randomMatriz(matriz1);
-		bibliotecaMatriz.randomMatriz(matriz2);
+        for (int i = 0; i < linha; i++)
+        {
 
-    	bool condSoma = false;
-    	bool condSub = false;
-		bool cond = true;
+            for (int j = 0; j < coluna; j++)
+            {
 
-		while(cond == true) {
+                matriz[i, j] = matriz[i, j] + constante;
 
-			Console.WriteLine("\n------------------------------");
 
-			Console.WriteLine("1 - somar as duas matrizes \n2 - subtrair a primeira matriz da segunda \n3 - adicionar uma constante nas duas matrizes \n4 - imprimir matrizes");
+            }
+        }
+
+    }
+
+
+    static void Main()
+    {
+
+        Console.WriteLine("Matriz");
+
+    volta:
+
+        Console.WriteLine("\nDigite o tamanho para a soma de marizes:");
+
+        Console.WriteLine("Obs: Máximo 100\n");
+
+        Console.Write("Digite a Quantidade de linhas da matriz: ");
+        int linha = int.Parse(Console.ReadLine());
+
+        Console.Write("Digite a Quantidade de linhas da matriz: ");
+        int coluna = int.Parse(Console.ReadLine());
+
+        if (linha > 100 || coluna > 100)
+        {
+            goto volta;
+
+        }
+
+        double[,] matriz1 = new double[linha, coluna];
+        double[,] matriz2 = new double[linha, coluna];
+        double[,] matriz3 = new double[linha, coluna];
+        double[,] matriz4 = new double[linha, coluna];
+
+
+        bibliotecaMatriz.randomMatriz(matriz1);
+        bibliotecaMatriz.randomMatriz(matriz2);
+
+        bool condSoma = false;
+        bool condSub = false;
+        bool cond = true;
+
+        while (cond == true)
+        {
+
+            Console.WriteLine("\n------------------------------");
+
+            Console.WriteLine("1 - somar as duas matrizes \n2 - subtrair a primeira matriz da segunda \n3 - adicionar uma constante nas duas matrizes \n4 - imprimir matrizes");
             Console.Write("obs: Digite qualquer outra tecla para sair.\n");
-			int escolha = int.Parse(Console.ReadLine());
+            int escolha = int.Parse(Console.ReadLine());
 
-			switch(escolha) {
+            switch (escolha)
+            {
 
-			case 1:
-			
-				matriz3 = somaMatriz(matriz1, matriz2);
-				
-			    condSoma = true;
-			    
-			    Console.Clear();
-			
-			break;
+                case 1:
 
-			case 2:
+                    matriz3 = somaMatriz(matriz1, matriz2);
 
-				matriz4 = subtraiMatriz(matriz1,matriz2);
-				
-				condSub = true;
-				
-				Console.Clear();
+                    condSoma = true;
 
-			break;
+                    Console.Clear();
 
-			case 3:
-				
-				Console.Write("Digite a constante a ser adicionada: ");
-				double constante = double.Parse(Console.ReadLine());
+                    break;
 
-				AdicionaConstante(matriz1, constante);
-				AdicionaConstante(matriz2, constante);
+                case 2:
 
-				Console.WriteLine("Constante adicionada");
-			
-			    Console.Clear();
-			
-			break;
+                    matriz4 = subtraiMatriz(matriz1, matriz2);
 
-			case 4:
-			
-			Console.Clear();
-			
-		        if(condSoma == true && condSub == true){
-			       
-			        Console.Write("\nMatriz 1:");
-    			    bibliotecaMatriz.showMatriz(matriz1);
-    				Console.WriteLine();
-    				
-    				Console.Write("\nMatriz 2:");
-    				bibliotecaMatriz.showMatriz(matriz2);
-    				Console.WriteLine();
-    				
-    				Console.Write("\nMatriz Soma:");
-    				bibliotecaMatriz.showMatriz(matriz3);
-    				Console.WriteLine();
-    				
-    				Console.Write("\nMatriz Subtraída:");
-    				bibliotecaMatriz.showMatriz(matriz4);
-    				Console.WriteLine();
-    				
-			    }
-			    else if(condSoma == true && condSub == false){
-			        
-			        Console.Write("\nMatriz 1:");
-    			    bibliotecaMatriz.showMatriz(matriz1);
-    				Console.WriteLine();
-    				
-    				Console.Write("\nMatriz 2:");
-    				bibliotecaMatriz.showMatriz(matriz2);
-    				Console.WriteLine();
-    				
-    				Console.Write("\nMatriz Soma:");
-    				bibliotecaMatriz.showMatriz(matriz3);
-    				Console.WriteLine();
-			 
-			    }
-				else if(condSoma == false && condSub == true){
-				    
-				    Console.Write("\nMatriz 1:");
-    			    bibliotecaMatriz.showMatriz(matriz1);
-    				Console.WriteLine();
-    				
-    				Console.Write("\nMatriz 2:");
-    				bibliotecaMatriz.showMatriz(matriz2);
-    				Console.WriteLine();
-    				
-    				Console.Write("\nMatriz Subtraída:");
-    				bibliotecaMatriz.showMatriz(matriz4);
-    				Console.WriteLine();
-    				
-				}
-				else{
-				    
-				    Console.Write("\nMatriz 1:");
-    			    bibliotecaMatriz.showMatriz(matriz1);
-    				Console.WriteLine();
-    				
-    				Console.Write("\nMatriz 2:");
-    				bibliotecaMatriz.showMatriz(matriz2);
-    				Console.WriteLine();
-    				
-				}
-			   
-			break;
+                    condSub = true;
 
-			default:
-			
-				cond = false;
-				
-		    break;
-		    
-			}
-			
-		}
+                    Console.Clear();
+
+                    break;
+
+                case 3:
+
+                    Console.Write("Digite a constante a ser adicionada: ");
+                    double constante = double.Parse(Console.ReadLine());
+
+                    AdicionaConstante(matriz1, constante);
+                    AdicionaConstante(matriz2, constante);
+
+                    Console.WriteLine("Constante adicionada");
+
+                    Console.Clear();
+
+                    break;
+
+                case 4:
+
+                    Console.Clear();
+
+                    if (condSoma == true && condSub == true)
+                    {
+
+                        Console.Write("\nMatriz 1:");
+                        bibliotecaMatriz.showMatriz(matriz1);
+                        Console.WriteLine();
+
+                        Console.Write("\nMatriz 2:");
+                        bibliotecaMatriz.showMatriz(matriz2);
+                        Console.WriteLine();
+
+                        Console.Write("\nMatriz Soma:");
+                        bibliotecaMatriz.showMatriz(matriz3);
+                        Console.WriteLine();
+
+                        Console.Write("\nMatriz Subtraída:");
+                        bibliotecaMatriz.showMatriz(matriz4);
+                        Console.WriteLine();
+
+                    }
+                    else if (condSoma == true && condSub == false)
+                    {
+
+                        Console.Write("\nMatriz 1:");
+                        bibliotecaMatriz.showMatriz(matriz1);
+                        Console.WriteLine();
+
+                        Console.Write("\nMatriz 2:");
+                        bibliotecaMatriz.showMatriz(matriz2);
+                        Console.WriteLine();
+
+                        Console.Write("\nMatriz Soma:");
+                        bibliotecaMatriz.showMatriz(matriz3);
+                        Console.WriteLine();
+
+                    }
+                    else if (condSoma == false && condSub == true)
+                    {
+
+                        Console.Write("\nMatriz 1:");
+                        bibliotecaMatriz.showMatriz(matriz1);
+                        Console.WriteLine();
+
+                        Console.Write("\nMatriz 2:");
+                        bibliotecaMatriz.showMatriz(matriz2);
+                        Console.WriteLine();
+
+                        Console.Write("\nMatriz Subtraída:");
+                        bibliotecaMatriz.showMatriz(matriz4);
+                        Console.WriteLine();
+
+                    }
+                    else
+                    {
+
+                        Console.Write("\nMatriz 1:");
+                        bibliotecaMatriz.showMatriz(matriz1);
+                        Console.WriteLine();
+
+                        Console.Write("\nMatriz 2:");
+                        bibliotecaMatriz.showMatriz(matriz2);
+                        Console.WriteLine();
+
+                    }
+
+                    break;
+
+                default:
+
+                    cond = false;
+
+                    break;
+
+            }
+
+        }
 
 
 
-	}
+    }
 
 
 }
