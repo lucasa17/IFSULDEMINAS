@@ -101,7 +101,26 @@ class Exercicio11
         int somaDS = somaDiagonalSecMatriz(matriz);
 
 
-        Console.Write("\n\nSoma Diagonal Principal: " + somaDP + "\nSoma Diagonal Sécundaria: " + somaDS);
+        Console.WriteLine("\n\nSoma Diagonal Principal: " + somaDP + "\nSoma Diagonal Sécundaria: " + somaDS);
+
+        if(somaDS > somaDP)
+        {
+
+            Console.WriteLine("\nO maior tesouro está na diagonal secundária, vamos para lá!");
+
+        }
+        else if(somaDS == somaDP)
+        {
+
+            Console.WriteLine("\nAmbas Diagonais apresentam a mesma quantidade de moedas");
+
+        }
+        else
+        {
+
+            Console.WriteLine("\nO maior tesouro está na diagonal primária, vamos para lá!");
+
+        }
     }
 
 
