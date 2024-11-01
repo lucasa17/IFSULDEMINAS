@@ -18,8 +18,9 @@ class Exercicio8
 
         int raios = int.Parse(Console.ReadLine());
 
-        if (raios < 1 || raios > 500001)
-        {
+        if (raios < 2 || raios > 500000)
+        {   
+            Console.Clear();
             goto volta;
 
         }
