@@ -88,6 +88,49 @@ namespace Matrizes
             }
         }
 
+                public static void randomMatriz100(int[,] matriz)
+        {
+
+            int linha = matriz.GetLength(0);
+            int coluna = matriz.GetLength(1);
+
+            Random random = new Random();
+
+            for (int i = 0; i < linha; i++)
+            {
+
+                for (int j = 0; j < coluna; j++)
+                {
+
+                    //Console.Write("["+i+"]["+j+"] = ");
+                    matriz[i, j] = random.Next(1, 100);
+
+                }
+
+            }
+        }
+        
+        public static void randomMatriz100(double[,] matriz)
+        {
+
+            int linha = matriz.GetLength(0);
+            int coluna = matriz.GetLength(1);
+
+            Random random = new Random();
+
+            for (int i = 0; i < linha; i++)
+            {
+
+                for (int j = 0; j < coluna; j++)
+                {
+
+                    //Console.Write("["+i+"]["+j+"] = ");
+                    matriz[i, j] = random.Next(1, 100);
+
+                }
+
+            }
+        }
 
         public static void showMatriz(int[,] matriz)
         {
