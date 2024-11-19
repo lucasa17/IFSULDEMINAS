@@ -106,7 +106,7 @@ primary key(id_manutencao_fk)
 
 alter table cliente 
 add constraint cliente_contrato
-foreign key (id_contrato_fk) references cotrato_locacao(id_contrato);
+foreign key (id_contrato_fk) references contrato_locacao(id_contrato);
 
 alter table cliente 
 add constraint cliente_pagamento
