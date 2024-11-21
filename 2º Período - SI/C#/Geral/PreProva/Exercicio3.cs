@@ -23,7 +23,17 @@ class exercicio3
         Console.WriteLine((int)palavra[pos]);
 
         char[] vetorChar = palavra.ToCharArray();
-        Console.WriteLine((int)palavra[pos]);
+        
+        Console.WriteLine("Posicao em minusculo");
+        vetorChar[pos] = (char)(vetorChar[pos] + 32);
+        Console.WriteLine($"{vetorChar[pos]}");
+        
+        Console.WriteLine("Palavra modificada:");
+        for(int i = 0; i < vetorChar.Length; i++)
+        {
+            Console.Write(vetorChar[i]);
+        }
+
 
         Console.ReadKey();
 
