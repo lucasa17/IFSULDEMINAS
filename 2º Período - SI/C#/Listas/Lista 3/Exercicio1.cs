@@ -339,28 +339,28 @@ class Exercicio1{
             }
         }
 
-    static void adicionaArquivo(List<tipoBanda> listadeBandas, string nomeArquivo)
-    {
-        if (File.Exists(nomeArquivo))
+        static void adicionaArquivo(List<tipoBanda> listadeBandas, string nomeArquivo)
         {
-            string[] linhas = File.ReadAllLines(nomeArquivo);
-            foreach (string linha in linhas)
+            if (File.Exists(nomeArquivo))
             {
-                string[] campos = linha.Split(',');
-                tipoBanda banda = new tipoBanda();
-                banda.nome = campos[0];
-                banda.genero = campos[1];
-                banda.integrantes = int.Parse(campos[2]);
-                banda.ranking = int.Parse(campos[3]);
-                listadeBandas.Add(banda);
+                string[] linhas = File.ReadAllLines(nomeArquivo);
+                foreach (string linha in linhas)
+                {
+                    string[] campos = linha.Split(',');
+                    tipoBanda banda = new tipoBanda();
+                    banda.nome = campos[0];
+                    banda.genero = campos[1];
+                    banda.integrantes = int.Parse(campos[2]);
+                    banda.ranking = int.Parse(campos[3]);
+                    listadeBandas.Add(banda);
+                }
+                Console.WriteLine("Dados carregados com sucesso!");
             }
-            Console.WriteLine("Dados carregados com sucesso!");
+            else
+            {
+                Console.WriteLine("Arquivo não encontrado :(");
+            }
         }
-        else
-        {
-            Console.WriteLine("Arquivo não encontrado :(");
-        }
-    }
 
 
     static int menu()
