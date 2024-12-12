@@ -438,6 +438,12 @@ class Exercicio1{
                         Console.WriteLine("Saindo.....");
 
                         break;
+
+                    default:
+                    
+                        Console.WriteLine("Essa opção não existe");
+
+                    break;
                 }
 
 
