@@ -339,8 +339,31 @@ class Exercicio1{
             }
         }
 
+    static void adicionaArquivo(List<tipoBanda> listadeBandas, string nomeArquivo)
+    {
+        if (File.Exists(nomeArquivo))
+        {
+            string[] linhas = File.ReadAllLines(nomeArquivo);
+            foreach (string linha in linhas)
+            {
+                string[] campos = linha.Split(',');
+                tipoBanda banda = new tipoBanda();
+                banda.nome = campos[0];
+                banda.genero = campos[1];
+                banda.integrantes = int.Parse(campos[2]);
+                banda.ranking = int.Parse(campos[3]);
+                listadeBandas.Add(banda);
+            }
+            Console.WriteLine("Dados carregados com sucesso!");
+        }
+        else
+        {
+            Console.WriteLine("Arquivo não encontrado :(");
+        }
+    }
 
-        static int menu()
+
+    static int menu()
         {
 
             Console.WriteLine("------------------Menu------------------");
@@ -351,6 +374,7 @@ class Exercicio1{
             Console.WriteLine("5 - Buscar bandas por ranking");
             Console.WriteLine("6 - Alterar banda");
             Console.WriteLine("7 - Excluir banda");
+            Console.WriteLine("8 - Carregue um arquivo");
             Console.WriteLine("0 - Sair");
             int op = int.Parse(Console.ReadLine());
 
@@ -421,7 +445,7 @@ class Exercicio1{
 
                         alterBanda(listadeBandas, nomeAlter);
 
-                        break;
+                    break;
 
                     case 7:
 
@@ -430,8 +454,18 @@ class Exercicio1{
 
                         deleteBanda(listadeBandas, nomeDel);
 
-                        break;
+                    break;
 
+                    case 8:
+
+                        Console.Write("Digite o nome do arquivo (inclua .txt): ");
+                        string nomeArq = Console.ReadLine();
+
+                        adicionaArquivo(listadeBandas, nomeArq);
+
+                    break;
+                   
+    
                     case 0:
 
                         salvarDados(listadeBandas, "dados.txt");
