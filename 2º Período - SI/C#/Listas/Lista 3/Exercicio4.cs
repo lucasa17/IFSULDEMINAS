@@ -277,37 +277,38 @@ class Exercicio4
         for (int i = 0; i < listaJogos.Count; i++)
         {
 
-            if (listaJogos[i].titulo.ToUpper().Equals(nomeJD.ToUpper()))
+
+            for (int j = 0; j < listaEmprestimos.Count; j++)
             {
 
-                Console.WriteLine("Jogo " + (i + 1));
+
+                if (listaJogos[i].titulo.ToUpper().Equals(nomeJD.ToUpper()))
+                {
+
+                    Console.WriteLine("Jogo " + (i + 1));
 
 
-                Console.WriteLine("Título: " + listaJogos[i].titulo);
-                Console.WriteLine("Console: " + listaJogos[i].console);
-                Console.WriteLine("Ano: " + listaJogos[i].ano);
-                Console.WriteLine("Ranking: " + listaJogos[i].ranking);
+                    Console.WriteLine("Título: " + listaJogos[i].titulo);
+                    Console.WriteLine("Console: " + listaJogos[i].console);
+                    Console.WriteLine("Ano: " + listaJogos[i].ano);
+                    Console.WriteLine("Ranking: " + listaJogos[i].ranking);
 
 
-                Console.WriteLine("\n");
+                    Console.WriteLine("\n");
 
-                emprestimo emprestimos = new emprestimo();
+                    emprestimo emprestimos = new emprestimo();
 
-                Console.WriteLine("\nDados do emprestimo:");
+                    Console.WriteLine("\nDados do emprestimo:");
 
-                Console.Write("Nome da pessoa:");
-                emprestimos.nomePessoa = Console.ReadLine();
+                    listaEmprestimos[j].emprestado = 'N';
+                    listaEmprestimos[j].ranking = listaJogos[i].ranking;
 
-                emprestimos.emprestado = 'N';
-                emprestimos.ranking = listaJogos[i].ranking;
+                    Console.WriteLine("Dados atualizados com sucesso!");
 
-                listaEmprestimos.Add(emprestimos);
-                Console.WriteLine("Dados atualizados com sucesso!");
+                    cont++;
+                }
 
-                cont++;
             }
-
-
         }
 
         if (cont == 0)
@@ -558,7 +559,7 @@ class Exercicio4
 
             }
 
-            Console.WriteLine("\nPressione qualquer tecla para constinuar...");
+            Console.WriteLine("\nPressione qualquer tecla para continuar...");
             Console.ReadKey();
 
             Console.Clear();
