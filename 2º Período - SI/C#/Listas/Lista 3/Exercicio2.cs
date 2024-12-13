@@ -97,7 +97,7 @@ class Exercicio2{
         if (cont == 0)
         {
 
-            Console.WriteLine("Livro não encontrada");
+            Console.WriteLine("Livro não encontrado");
 
         }
 
