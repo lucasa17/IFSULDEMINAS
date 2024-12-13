@@ -1,3 +1,18 @@
+/*
+Faça um programa que controla o consumo de energia dos eletrodomésticos de uma
+casa:
+a. Crie uma estrutura para armazenar os dados de cada eletrodoméstico: nome,
+potencia (real, em kW) e tempo médio ativo por dia (real, em horas)
+b. Permite listar em tela e salvar em um arquivo.
+c. Permita buscar pelo seu nome.
+d. Permita buscar pelos eletrodomésticos que gastam mais que um valor X.
+e. Calcule e mostre o consumo diário e mensal da casa em kW e R$. Para mostrar
+em R$ receba o valor do kW/h.
+f. Organize tudo em uma aplicação que exiba um menu as opções de preencher
+as estruturas e todas as opções das questões passadas mais a possibilidade do
+usuário carregar os dados já gravados.
+*/
+
 using System;
 using System.IO;
 
