@@ -235,90 +235,54 @@ class Exercicio4
 
         for (int i = 0; i < listaJogos.Count; i++)
         {
-
             for (int j = 0; j < listaEmprestimos.Count; j++)
             {
-
-
-                if (listaJogos[i].ranking.Equals(listaEmprestimos[j].ranking) && listaEmprestimos[j].emprestado == 'S')
-
-                Console.WriteLine("Jogo " + (i + 1));
-
-
-                Console.WriteLine("Título: " + listaJogos[i].titulo);
-                Console.WriteLine("Console: " + listaJogos[i].console);
-                Console.WriteLine("Ano: " + listaJogos[i].ano);
-                Console.WriteLine("Ranking: " + listaJogos[i].ranking);
-
-                Console.WriteLine("Pessoa que emprestou: " + listaEmprestimos[j].nomePessoa);
-                Console.WriteLine("Data: " + listaEmprestimos[j].data);
-
-
-                Console.WriteLine("\n");
-
-                cont++;
-            }
-        }
-
-        if (cont == 0)
-        {
-
-            Console.WriteLine("Não há emprestimos");
-
-        }
-
-    }
-
-    static void devolveJogo(List<jogos> listaJogos, List<emprestimo> listaEmprestimos, string nomeJD)
-    {
-
-        int cont = 0;
-
-        for (int i = 0; i < listaJogos.Count; i++)
-        {
-
-
-            for (int j = 0; j < listaEmprestimos.Count; j++)
-            {
-
-
-                if (listaJogos[i].titulo.ToUpper().Equals(nomeJD.ToUpper()))
+                if (listaJogos[i].ranking.Equals(listaEmprestimos[j].ranking))
                 {
-
-                    Console.WriteLine("Jogo " + (i + 1));
-
-
-                    Console.WriteLine("Título: " + listaJogos[i].titulo);
-                    Console.WriteLine("Console: " + listaJogos[i].console);
-                    Console.WriteLine("Ano: " + listaJogos[i].ano);
-                    Console.WriteLine("Ranking: " + listaJogos[i].ranking);
-
-
-                    Console.WriteLine("\n");
-
-                    emprestimo emprestimos = new emprestimo();
-
-                    Console.WriteLine("\nDados do emprestimo:");
-
-                    listaEmprestimos[j].emprestado = 'N';
-                    listaEmprestimos[j].ranking = listaJogos[i].ranking;
-
-                    Console.WriteLine("Dados atualizados com sucesso!");
-
-                    cont++;
+                    if (listaEmprestimos[j].emprestado == 'S') // Apenas exibe se estiver emprestado
+                    {
+                        Console.WriteLine("Jogo " + (i + 1));
+                        Console.WriteLine("Título: " + listaJogos[i].titulo);
+                        Console.WriteLine("Console: " + listaJogos[i].console);
+                        Console.WriteLine("Ano: " + listaJogos[i].ano);
+                        Console.WriteLine("Ranking: " + listaJogos[i].ranking);
+                        Console.WriteLine("Pessoa que emprestou: " + listaEmprestimos[j].nomePessoa);
+                        Console.WriteLine("Data: " + listaEmprestimos[j].data);
+                        Console.WriteLine("\n");
+                        cont++;
+                    }
                 }
-
             }
         }
 
         if (cont == 0)
         {
+            Console.WriteLine("Não há empréstimos ativos.");
+        }
+    }
 
-            Console.WriteLine("Jogo não encontrado");
+    static void devolveJogo(List<jogos> listaJogos, List<emprestimo> listaEmprestimos, int rank)
+    {
+        bool encontrado = false;
 
+        for (int j = 0; j < listaEmprestimos.Count; j++)
+        {
+            if (listaEmprestimos[j].ranking == rank && listaEmprestimos[j].emprestado == 'S')
+            {
+                // Atualiza o status do empréstimo para 'N'
+                listaEmprestimos[j].emprestado = 'N';
+                Console.WriteLine("Jogo devolvido com sucesso!");
+                encontrado = true;
+                break; // Saia do loop após encontrar e atualizar
+            }
         }
 
+        if (!encontrado)
+        {
+            Console.WriteLine("Jogo não encontrado ou já devolvido.");
+        }
     }
+
     static void salvarDadosJ(List<jogos> listaJogos, string nomeArquivo)
     {
         StreamWriter writer = new StreamWriter(nomeArquivo);
@@ -522,7 +486,30 @@ class Exercicio4
                     Console.Write("Digite o jogo a ser devolvido: ");
                     string nomeJD = Console.ReadLine();
 
-                    devolveJogo(listaJogos, listaEmprestimo, nomeJD);
+                    int rank = 0;
+
+                    for (int i = 0; i < listaJogos.Count; i++)
+                    {
+
+                        if (listaJogos[i].titulo.ToUpper().Equals(nomeJD.ToUpper()))
+                        {
+
+                            Console.WriteLine("Jogo " + (i + 1));
+
+
+                            Console.WriteLine("Título: " + listaJogos[i].titulo);
+                            Console.WriteLine("Console: " + listaJogos[i].console);
+                            Console.WriteLine("Ano: " + listaJogos[i].ano);
+                            Console.WriteLine("Ranking: " + listaJogos[i].ranking);
+
+
+                            Console.WriteLine("\n");
+
+                            rank = listaJogos[i].ranking;
+                        }
+                    }
+                    
+                        devolveJogo(listaJogos, listaEmprestimo, rank);
 
                     break;
 
