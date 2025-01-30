@@ -70,7 +70,12 @@ class Program
 
                 Console.WriteLine("Quantidade em Estoque: " + ListaDeItens[i].quantidadeAtual);
 
+                Console.WriteLine("Entre com a quantidade para atualizar: ");
+                int quantidade = int.Parse(Console.ReadLine());
 
+                ListaDeItens[i].quantidadeAtual += quantidade;
+
+                Console.WriteLine("Estoque atualizado");
             }
 
 
