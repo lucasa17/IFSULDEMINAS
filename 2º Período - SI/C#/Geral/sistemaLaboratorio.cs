@@ -55,25 +55,27 @@ class Program
     }
 
 
-    static void atualizaEstoque(List<ItemConsumo> ListaDeItens, string nome)
+    static void atualizaEstoque(List<ItemConsumo> listaDeItens, string nome)
     {
 
-        for (int i = 0; i < ListaDeItens.Count; i++)
+        for (int i = 0; i < listaDeItens.Count; i++)
         {
 
-            if (nome.Equals(ListaDeItens[i].nomeItem))
+            if (nome.Equals(listaDeItens[i].nomeItem))
             {
 
-                Console.WriteLine("Nome: " + ListaDeItens[i].nomeItem);
+                Console.WriteLine("Nome: " + listaDeItens[i].nomeItem);
 
-                Console.WriteLine("Tipo: " + ListaDeItens[i].tipoItem);
+                Console.WriteLine("Tipo: " + listaDeItens[i].tipoItem);
 
-                Console.WriteLine("Quantidade em Estoque: " + ListaDeItens[i].quantidadeAtual);
+                Console.WriteLine("Quantidade em Estoque: " + listaDeItens[i].quantidadeAtual);
+                
+                Console.WriteLine("Quantidade Mínima:" + listaDeItens[i].quantidadeMinima);
 
                 Console.WriteLine("Entre com a quantidade para atualizar: ");
                 int quantidade = int.Parse(Console.ReadLine());
 
-                ListaDeItens[i].quantidadeAtual += quantidade;
+                listaDeItens[i].quantidadeAtual += quantidade;
 
                 Console.WriteLine("Estoque atualizado");
             }
@@ -81,8 +83,32 @@ class Program
 
         }
 
-
     }
+    
+    
+    static void estoqueAbaixo(List<ItemConsumo> listaDeItens){
+            
+             for (int i = 0; i < listaDeItens.Count; i++)
+        {
+
+            if (listaDeItens[i].quantidadeAtual < listaDeItens[i].quantidadeMinima)
+            {
+
+                Console.WriteLine("\n\nNome: " + listaDeItens[i].nomeItem);
+
+                Console.WriteLine("Tipo: " + listaDeItens[i].tipoItem);
+
+                Console.WriteLine("Quantidade em Estoque: " + listaDeItens[i].quantidadeAtual);
+                
+                Console.WriteLine("Quantidade Mínima:" + listaDeItens[i].quantidadeMinima);
+
+
+            }
+
+
+        }
+            
+        }
 
     static void salvarDados(List<ItemConsumo> listaDeItens, string nomeArquivo)
     {
@@ -127,6 +153,7 @@ class Program
         Console.WriteLine("1 - Adicionar Item");
         Console.WriteLine("2 - Mostrar Itens");
         Console.WriteLine("3 - Atualizar estoque");
+        Console.WriteLine("4 - Consultar itens com estoque abaixo");
         Console.WriteLine("0 - Sair");
         int op = int.Parse(Console.ReadLine());
         return op;
@@ -164,6 +191,12 @@ class Program
                     atualizaEstoque(listaDeItens, nome);
 
                     break;
+                    
+                case 4:
+                
+                    estoqueAbaixo(listaDeItens);
+                    
+                    break;
 
                 case 0:
 
@@ -173,8 +206,10 @@ class Program
 
                     break;
             }
+            
             Console.ReadKey();
             Console.Clear();
+            
         } while (op != 0);
     }
 }
