@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Numerics;
 
 class TipoSalaAula
 {
@@ -54,6 +55,31 @@ class Program
         }
     }
 
+    static void mostraSalaNumero(List<TipoSalaAula> listaSalas, int numero)
+    {
+
+        Console.WriteLine("Salas:\n");
+
+        for (int i = 0; i < listaSalas.Count; i++)
+        {
+            if (listaSalas[i].numeroSala == numero)
+            {
+
+                Console.WriteLine("\nSala " + (i + 1));
+
+                Console.WriteLine("Localização: " + listaSalas[i].numeroSala);
+
+                Console.WriteLine("Tipo: " + listaSalas[i].localizacao);
+
+                Console.WriteLine("Tipo da Sala: " + listaSalas[i].tipo);
+
+                Console.WriteLine("Tamanho (m²): " + listaSalas[i].tamanho);
+
+                Console.WriteLine("Quantidade de Cadeiras: " + listaSalas[i].quantidadeCadeiras);
+
+            }
+        }
+    }
     static void salvarDados(List<TipoSalaAula> listaSalas, string nomeArquivo)
     {
         StreamWriter writer = new StreamWriter(nomeArquivo);
@@ -94,6 +120,7 @@ class Program
         Console.WriteLine("*** Controle de Reservas de Salas ***");
         Console.WriteLine("1 - Adicionar Sala");
         Console.WriteLine("2 - Mostrar Salas");
+        Console.WriteLine("3 - Buscar sala por número");
         Console.WriteLine("0 - Sair");
         Console.Write("Opção: ");
         return int.Parse(Console.ReadLine());
@@ -118,6 +145,16 @@ class Program
                 case 2:
 
                     mostrarSalas(listaSalas);
+
+                    break;
+
+                case 3:
+
+                    Console.WriteLine("Digite o número da sala: ");
+
+                    int numero = int.Parse(Console.ReadLine());
+
+                    mostraSalaNumero(listaSalas, numero);
 
                     break;
 
