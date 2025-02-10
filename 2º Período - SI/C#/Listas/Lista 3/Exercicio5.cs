@@ -11,10 +11,10 @@ class Data
 class Gado
 {
     public int codigo;
-    public double leite; // em litros
-    public double alim; // em quilos
+    public double leite; 
+    public double alim; 
     public Data nasc = new Data();
-    public char abate; // 'N' ou 'S'
+    public char abate;
 }
 
 class Program
@@ -104,7 +104,7 @@ class Program
             Console.Write("Ano:");
             gado.nasc.ano = int.Parse(Console.ReadLine());
 
-            gado.abate = 'N'; // Inicialmente, não está para abate
+            gado.abate = 'N'; 
 
             gadoList.Add(gado);
         }
