@@ -36,10 +36,10 @@ class Program
                     PreencherAbate(gadoList);
                     break;
                 case 3:
-                    Console.WriteLine($"Total de leite produzido por semana: {TotalLeite(gadoList)} litros");
+                    Console.WriteLine($"Total de leite produzido por semana: {TotalLeite(gadoList):F2} litros");
                     break;
                 case 4:
-                    Console.WriteLine($"Total de alimento consumido por semana: {TotalAlimento(gadoList)} quilos");
+                    Console.WriteLine($"Total de alimento consumido por semana: {TotalAlimento(gadoList):F2} quilos");
                     break;
                 case 5:
                     ListarAbate(gadoList);
