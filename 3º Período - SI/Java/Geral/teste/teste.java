@@ -26,18 +26,24 @@ public class Teste {
     }
     
     
+    static void alteraNome(String novoNome){
+        
+        novoNome += " Silva";
+        
+        System.out.println("\nNome na função: "+novoNome);
+        
+    }
+    
     public static void main(String[] args) {
 
         Car novoCarro = new Car();//novoCarro se torna objeto pois recebe referencia de Car
+                
+        Car novaCarroca = new Car();//novoCarro se torna objeto pois recebe referencia de Car
 
             novoCarro.alteraVelocidade(10);
-
-        Car novaCarroca = new Car();//novoCarro se torna objeto pois recebe referencia de Car
             
             novaCarroca.alteraVelocidade(15);
-        
-
-        
+                                
         System.out.println("Velocidade do novoCarro: "+ novoCarro.velocidadeAtual());
 
             int velocidade = addVelocidade(novoCarro.velocidadeAtual());
@@ -45,8 +51,6 @@ public class Teste {
         System.out.println("Velocidade retornada pela função: "+velocidade);
 
         System.out.println("Velocidade fora da função: "+novoCarro.velocidadeAtual());
-
-
         
             addVelocidadeCar(novoCarro);
             
@@ -55,6 +59,14 @@ public class Teste {
             addVelocidadeCar(novaCarroca);
 
         System.out.println("Velocidade fora da nova função: "+novaCarroca.velocidadeAtual());
+
+        
+        
+        String nome = "Lucas";
+        
+        alteraNome(nome);
+        
+        System.out.println("Nome fora da função: "+nome);
 
     }
     
