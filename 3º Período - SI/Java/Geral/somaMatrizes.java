@@ -28,9 +28,7 @@ public class somaMatrizes {
          for(int i = 0; i < 3; i++){
 
            for(int j = 0; j < 3; j++){
-               
-                System.out.print("Elemento [" + i + "][" + j + "]: ");
-                
+                              
                 matriz3[i][j] = matriz1[i][j] + matriz2[i][j];
                 
            }
