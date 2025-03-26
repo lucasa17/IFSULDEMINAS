@@ -37,4 +37,31 @@ public class Pilha<T> {
         
     }
     
+    public boolean push(T dado){
+        
+        if(!this.isFull()){
+            
+            this.topo++;
+            this.elementos[this.topo] = dado;
+            
+        return true;  
+        }
+        
+    return false;  
+    }
+    
+    @Override
+    public String toString(){
+        
+        StringBuilder retorno = 
+                    new StringBuilder("Topo\n");
+        
+        for(int i = this.topo; i >= 0; i--){
+            
+            retorno.append(this.elementos[i] + "\n");
+            
+        }
+    return retorno.toString();   
+    }
+    
 }
