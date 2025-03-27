@@ -18,7 +18,6 @@ public class Pilha<T> {
         //EX: objeto Car -> elementos = new Car[tamanho]
         
         this.topo = -1;
-        
     }
     
     //Checa se o vetor esta vazio
@@ -32,9 +31,8 @@ public class Pilha<T> {
     //Checa se o vetor esta cheio
     public boolean isFull(){
         
-        //Compara e retorna true or false
-        return this.elementos.length -1 == this.topo;
-        
+    //Compara e retorna true or false
+    return this.elementos.length -1 == this.topo;
     }
     
     public boolean push(T dado){
@@ -50,17 +48,30 @@ public class Pilha<T> {
     return false;  
     }
     
+    public T pop(){
+        
+    /*T dado =  this.elementos[this.topo];     
+    this.topo--;
+    return dado;*/
+    return this.elementos[this.topo--];
+    }
+    
+    public T peek(){
+        
+    return this.elementos[this.topo];
+    }
+    
     @Override
     public String toString(){
         
-        StringBuilder retorno = 
-                    new StringBuilder("Topo\n");
+        StringBuilder retorno = new StringBuilder("Topo\n");
         
         for(int i = this.topo; i >= 0; i--){
             
             retorno.append(this.elementos[i] + "\n");
             
         }
+        
     return retorno.toString();   
     }
     
