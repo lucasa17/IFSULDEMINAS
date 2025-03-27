@@ -36,7 +36,8 @@ public class Exercicio {
     }
     
     
-     static void mostraPessoa(List<Pessoa> listaPessoas) {
+    
+    static void mostraPessoa(List<Pessoa> listaPessoas) {
          
         for (Pessoa p : listaPessoas) {
             
@@ -44,7 +45,38 @@ public class Exercicio {
             
         }
     }
+    
+    
    
+    static void buscarPessoaNome(List<Pessoa> listaPessoas, String nome) {
+        
+        int cont = 0;
+
+        for (int i = 0; i < listaPessoas.size(); i++) {
+
+            Pessoa p = listaPessoas.get(i);
+
+
+            if (p.nome.toUpperCase().equals(nome.toUpperCase())) {
+                
+                System.out.println("Nome: " + p.nome);
+                System.out.println("Idade: " + p.idade);
+                System.out.println("Sexo: " + p.sexo);
+                
+                System.out.println("\n");
+
+                        
+                cont++;
+                
+            }
+        }
+
+        if (cont == 0) {
+            System.out.println("Pessoa não encontrada");
+        }
+    }
+     
+    
      
     public static void salvarDados(List<Pessoa> listaPessoas, String nomeArquivo) {
     
@@ -156,8 +188,9 @@ public class Exercicio {
 
             System.out.println("\n------------------Menu------------------");
             System.out.println("1 - Cadastrar pessoa");
-            System.out.println("2 - Mostrar bandas");
-            System.out.println("3 - Adicione um arquivo");
+            System.out.println("2 - Mostrar pessoas");
+            System.out.println("3 - Buscar por nome");
+            System.out.println("4 - Adicione um arquivo");
             System.out.println("0 - Sair");
             
             
@@ -171,7 +204,18 @@ public class Exercicio {
 
        Scanner scanner = new Scanner(System.in);
 
+       Aluno pessoa1 = new Aluno();
+       
+       pessoa1.nome = "Lucas";
+       pessoa1.idade = 18;
+       pessoa1.sexo = 'm';
+       pessoa1.curso = "Sistemas de informações";
+       
+       
+       
        List<Pessoa> listaPessoas = new ArrayList<>();
+       
+       
        
 
        carregarDados(listaPessoas, "pessoas.txt");
@@ -196,7 +240,14 @@ public class Exercicio {
 
                     break;
                     
-                     case 3:
+                    case 3:
+                        
+                        System.out.print("Digite o nome desejado: ");
+                        String nome = scanner.nextLine(); 
+                        
+                        buscarPessoaNome(listaPessoas, nome);
+                    
+                     case 4:
 
                         System.out.println("Digite o nome do arquivo (inclua .txt): ");
                         String nomeArq = scanner.nextLine();
