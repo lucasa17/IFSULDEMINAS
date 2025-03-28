@@ -1,10 +1,10 @@
 package ingressos;
 
 public class Pessoa {
-    String nome;
-    int idade;
-    char sexo;
-    String evento;
+    public String nome;
+    public int idade;
+    public char sexo;
+    public String evento;
 
     // Construtor, getters e setters
     public Pessoa(String nome, int idade, char sexo, String evento) {
