@@ -1,113 +1,140 @@
 package ingressos;
 
-import java.util.Scanner;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Ingressos {
+public class SistemaIngressos {
+    private List<Pessoa> listaPessoas = new ArrayList<>();
+    private List<Evento> listaEventos = new ArrayList<>();
 
-    public static void main(String[] args) {
-        SistemaIngressos sistema = new SistemaIngressos();
-        Scanner scanner = new Scanner(System.in);
-        String nomeArquivoPessoas = "pessoas.txt";
-        String nomeArquivoEventos = "eventos.txt";
+    public void adicionarPessoa(Pessoa pessoa) {
+        
+        listaPessoas.add(pessoa);
+        
+        
+    }
 
+    public void removerPessoa(String nome) {
+        listaPessoas.removeIf(p -> p.nome.equals(nome));
+    }
 
-        // Carregar dados do arquivo
-        sistema.carregarDadosPessoas(nomeArquivoPessoas);
-        sistema.carregarDadosEventos(nomeArquivoEventos);
-
-
-        while (true) {
-            System.out.println("\n\n1. Cadastrar Pessoa");
-            System.out.println("2. Listar Pessoas");
-            System.out.println("3. Remover Pessoa");
-            System.out.println("4. Cadastrar Evento");
-            System.out.println("5. Atualizar Evento");
-            System.out.println("6. Lista Eventos");
-            System.out.println("7. Remover Evento");
-            System.out.println("8. Comprar Ingressos");
-            System.out.println("9. Salvar e Sair");
-            System.out.print("Escolha uma opção: ");
-            int opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
-
-            switch (opcao) {
-                case 1:
-                    System.out.print("Nome: ");
-                    String nome = scanner.nextLine();
-                    System.out.print("Idade: ");
-                    int idade = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
-                    System.out.print("Sexo (M/F): ");
-                    char sexo = scanner.nextLine().charAt(0);
-                    sistema.adicionarPessoa(new Pessoa(nome, idade, sexo, "."));
-                    break;
-
-                case 2:
-                    System.out.println("Lista de Pessoas:");
-                    sistema.listarPessoas();
-                    break;
-
-                case 3:
-                    System.out.print("Nome da Pessoa a remover: ");
-                    String nomeRemover = scanner.nextLine();
-                    sistema.removerPessoa(nomeRemover);
-                    break;
-
-                case 4:
-                    System.out.print("Nome do Evento: ");
-                    String nomeEvento = scanner.nextLine();
-                    System.out.print("Data do Evento: ");
-                    String dataEvento = scanner.nextLine();
-                    System.out.print("Ingressos Disponíveis: ");
-                    int ingressosDisponiveis = scanner.nextInt();
-                    sistema.adicionarEvento(new Evento(nomeEvento, dataEvento, ingressosDisponiveis));
+    public void atualizarEvento(String nome, Evento novoEvento) {
+        for (int i = 0; i < listaPessoas.size(); i++) {
+            if (listaEventos.get(i).nome.equals(nome)) {
+                listaEventos.set(i, novoEvento);
                 break;
-                
-                case 5:
-                    
-                    sistema.listarEventos();
-
-                    System.out.print("\nNome do evento a atualizar: ");
-                    String nomeAtualizar = scanner.nextLine();
-                    System.out.print("Novo Nome: ");
-                    String novoNome = scanner.nextLine();
-                    System.out.print("Nova data: ");
-                    String novaData = scanner.nextLine();
-                    scanner.nextLine(); // Limpar o buffer
-                    System.out.print("Nova quantia de ingressos: ");
-                    int novaQuantia = scanner.nextInt();
-                    sistema.atualizarEvento(nomeAtualizar, new Evento(novoNome, novaData, novaQuantia));
-                    break;
-
-                case 6:
-                    System.out.println("Lista de Eventos:");
-                    sistema.listarEventos();
-                    break;
-                
-                case 7:
-                    System.out.print("Nome do evento a remover: ");
-                    String nomeEventoRemove = scanner.nextLine();
-                    sistema.removerEvento(nomeEventoRemove);
-                break;
-                    
-                case 8:
-                    System.out.print("Nome do Evento para comprar ingressos: ");
-                    String eventoComprar = scanner.nextLine();
-                    System.out.print("Quantidade de ingressos: ");
-                    int quantidade = scanner.nextInt();
-                    sistema.comprarIngresso(eventoComprar, quantidade);
-                    break;
-
-                case 9:
-                    sistema.salvarDadosPessoas(nomeArquivoPessoas);
-                    sistema.salvarDadosEventos(nomeArquivoEventos);
-                    System.out.println("Saindo do sistema...");
-                    scanner.close();
-                    return; // Encerra o programa
-
-                default:
-                    System.out.println("Opção inválida! Tente novamente.");
             }
+        }
+    }
+
+    public void listarPessoas() {
+        for (Pessoa p : listaPessoas) {
+            System.out.println("Nome: " + p.nome);
+            System.out.println("Idade: " + p.idade);
+            System.out.println("Sexo: " + p.sexo);
+            System.out.println("Evento: " + p.evento);
+        }
+    }
+
+    public void removerEvento(String nome) {
+        listaEventos.removeIf(p -> p.nome.equals(nome));
+    }
+    public void adicionarEvento(Evento evento) {
+                listaEventos.add(evento);
+    }
+
+    public void listarEventos() {
+        for (Evento e : listaEventos) {
+            System.out.println("Nome: " + e.nome);
+            System.out.println("Data: " + e.data);
+            System.out.println("Ingressos disponíveis: " + e.ingressosDisponiveis);
+        }
+    }
+
+    public void comprarIngresso(String nomeEvento, int quantidade) {
+        for (Evento e : listaEventos) {
+            if (e.nome.equals(nomeEvento)) {
+                e.comprarIngresso(quantidade);
+            break;
+            }
+            else{
+                System.out.println("Evento não encontrado");
+            break;
+            }
+            }
+        }
+    
+
+    public void salvarDadosPessoas(String nomeArquivo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+            for (Pessoa p : listaPessoas) {
+                writer.write(p.toString());
+                writer.newLine();
+            }
+            System.out.println("Dados de pessoas salvos com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar os dados: " + e.getMessage());
+        }
+    }
+    
+    
+    public void salvarDadosEventos(String nomeArquivo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+            for (Evento e : listaEventos) {
+                writer.write(e.toString());
+                writer.newLine();
+            }
+            System.out.println("Dados de Eventos salvos com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar os dados: " + e.getMessage());
+        }
+    }
+
+    public void carregarDadosPessoas(String nomeArquivo) {
+        File arquivo = new File(nomeArquivo);
+        if (arquivo.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
+                String linha;
+                while ((linha = reader.readLine()) != null) {
+                    String[] campos = linha.split(",");
+                    if (campos.length == 4) {
+                        Pessoa novaPessoa = new Pessoa(campos[0], Integer.parseInt(campos[1]), campos[2].charAt(0), campos[3]);
+                        listaPessoas.add(novaPessoa);
+                    }
+                }
+                System.out.println("Dados de pessoas carregados com sucesso!");
+            } catch (IOException e) {
+                System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println("Erro: formato inválido nos dados do arquivo.");
+            }
+        } else {
+            System.out.println("Arquivo não encontrado :(");
+        }
+    }
+    
+    
+        public void carregarDadosEventos(String nomeArquivo) {
+        File arquivo = new File(nomeArquivo);
+        if (arquivo.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
+                String linha;
+                while ((linha = reader.readLine()) != null) {
+                    String[] campos = linha.split(",");
+                    if (campos.length == 3) {
+                        Evento novoEvento = new Evento(campos[0], campos[1], Integer.parseInt(campos[2]));
+                        listaEventos.add(novoEvento);
+                    }
+                }
+                System.out.println("Dados de pessoas carregados com sucesso!");
+            } catch (IOException e) {
+                System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println("Erro: formato inválido nos dados do arquivo.");
+            }
+        } else {
+            System.out.println("Arquivo não encontrado :(");
         }
     }
 }
