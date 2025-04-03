@@ -48,18 +48,13 @@ public class Novo {
                     
                     if(!minhaPilha.isEmpty()){
                         if(novoRecorde.getTempo() < minhaPilha.peek().getTempo()){
-                            if(minhaPilha.push(novoRecorde) == true){
-                                System.out.println("Item inserido com sucesso");
-                                break;
-                            }
-                            else{
-                                System.out.println("Pilha cheia, Item não inserido");
-                                break;
-                            }
+                            minhaPilha.push(novoRecorde);
+                            System.out.println("Item inserido com sucesso");
                         }
                     }
                     else{
                         minhaPilha.push(novoRecorde);
+                        System.out.println("Item inserido com sucesso");
                     }
                 break;
                 case 2: 
