@@ -8,6 +8,10 @@ public class Recorde {
    private String nome;
    private double tempo;
    
+    public Recorde(){
+        this.tempo = Double.MAX_VALUE;
+    }
+    
     public LocalDate getDataRecorde() {
         return dataRecorde;
     }
