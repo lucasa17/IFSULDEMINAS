@@ -207,23 +207,28 @@ public class FormSistema extends javax.swing.JFrame {
 
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {                                       
-       Recorde novoRecorde = new Recorde();
-       novoRecorde.setNome(txtNome.getText());
-       novoRecorde.setTempo(Double.parseDouble(txtTempo.getText()));
-       String dataStr = txtData.getText();
-       LocalDate dataFormatada = LocalDate.parse(dataStr,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-       novoRecorde.setDataRecorde(dataFormatada);
-       
-        if(!minhaPilha.isEmpty()){
-            if(novoRecorde.getTempo() < minhaPilha.peek().getTempo()){
-                minhaPilha.push(novoRecorde);
-                mostrarPilha(minhaPilha, listPilha);
-            }
-            }
-        else{
-            minhaPilha.push(novoRecorde);
-            mostrarPilha(minhaPilha, listPilha);
-        }
+       if(txtTempo.getText() != "" || txtNome.getText() != "" || txtData.getText() != ""){
+            JOptionPane.showMessageDialog(this, "Há campos vazios, preencha-os antes de adicionar um recorde", "Erro", JOptionPane.ERROR_MESSAGE);
+       }
+       else{ 
+            Recorde novoRecorde = new Recorde();
+            novoRecorde.setNome(txtNome.getText());
+            novoRecorde.setTempo(Double.parseDouble(txtTempo.getText()));
+            String dataStr = txtData.getText();
+            LocalDate dataFormatada = LocalDate.parse(dataStr,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            novoRecorde.setDataRecorde(dataFormatada);
+
+             if(!minhaPilha.isEmpty()){
+                 if(novoRecorde.getTempo() < minhaPilha.peek().getTempo()){
+                     minhaPilha.push(novoRecorde);
+                     mostrarPilha(minhaPilha, listPilha);
+                 }
+                 }
+             else{
+                 minhaPilha.push(novoRecorde);
+                 mostrarPilha(minhaPilha, listPilha);
+             }
+       }
 
     }                                      
 
