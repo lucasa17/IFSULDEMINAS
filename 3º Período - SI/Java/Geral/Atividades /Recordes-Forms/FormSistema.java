@@ -203,14 +203,22 @@ public class FormSistema extends javax.swing.JFrame {
        String dataStr = txtData.getText();
        LocalDate dataFormatada = LocalDate.parse(dataStr,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
        novoRecorde.setDataRecorde(dataFormatada);
-       minhapilha.push(novoRecorde);
-       mostrarPilha(minhapilha, listPilha);
+       
+        if(!minhaPilha.isEmpty()){
+            if(novoRecorde.getTempo() < minhaPilha.peek().getTempo()){
+                minhaPilha.push(novoRecorde);
+                mostrarPilha(minhaPilha, listPilha);
+            }
+            }
+        else{
+            minhaPilha.push(novoRecorde);
+            mostrarPilha(minhaPilha, listPilha);
+        }
+
     }                                      
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        
-
-        
+        minhaPilha.pop();
     }                                         
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {                                        
