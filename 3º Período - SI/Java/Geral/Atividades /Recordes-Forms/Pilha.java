@@ -40,6 +40,7 @@ public class Pilha<T> {
        // return dado;
         return this.elementos[this.topo--];
     }
+    
     public T peek(){
        // T dado = this.elementos[this.topo];
        // return dado;
@@ -60,7 +61,7 @@ public class Pilha<T> {
     public String toString(){
         
         StringBuilder retorno =
-                new StringBuilder("Topo\n");
+                new StringBuilder("\n");
         for(int i = this.topo ; i>=0; i--)
             retorno.append(this.elementos[i]+"\n");
         
