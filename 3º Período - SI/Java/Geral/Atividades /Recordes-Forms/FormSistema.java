@@ -218,8 +218,18 @@ public class FormSistema extends javax.swing.JFrame {
     }                                      
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        minhaPilha.pop();
-    }                                         
+        if (!minhaPilha.isEmpty()) {
+            Recorde valores = minhaPilha.pop(); 
+
+            minhaPilhaDesimpilhada.push(valores);
+
+            mostrarPilha(minhaPilha, listPilha);
+            mostrarPilhaDesimpilhada(minhaPilhaDesimpilhada, listAux);
+        } 
+        else {
+            JOptionPane.showMessageDialog(this, "A pilha está vazia!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }                                                
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
