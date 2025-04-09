@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class FormSistema extends javax.swing.JFrame {
-    Pilha<Recorde> minhapilha = new Pilha();
+    Pilha<Recorde> minhaPilha = new Pilha();
     
     public FormSistema() {
         initComponents();
