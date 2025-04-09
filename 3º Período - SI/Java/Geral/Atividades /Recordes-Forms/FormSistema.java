@@ -1,14 +1,20 @@
 package javarecordscontrol;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.util.*;
-import java.time.format.DateTimeFormatter;import javax.swing.JOptionPane;
+import java.time.format.DateTimeFormatter;import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class FormSistema extends javax.swing.JFrame {
     Pilha<Recorde> minhaPilha = new Pilha();
+    Pilha<Recorde> minhaPilhaDesimpilhada = new Pilha();
+
     
     public FormSistema() {
         initComponents();
@@ -18,8 +24,12 @@ public class FormSistema extends javax.swing.JFrame {
         meuList.setText("");
         meuList.append(p.toString());
             
-        }
-            
+    }
+    void mostrarPilhaDesimpilhada(Pilha<Recorde> p, JTextArea listAux){        
+        listAux.setText("");
+        listAux.append(p.toString());
+    }
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
