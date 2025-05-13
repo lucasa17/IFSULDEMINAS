@@ -1,0 +1,31 @@
+use bancobd22025;
+
+show tables;
+
+select * from conta;
+
+start transaction;
+
+update conta 
+set saldo = saldo * 1.1 
+where tipo = 'Poupança';
+
+select * from conta;
+
+insert into cliente (nome, cpf, rg, dataNascimento, telefone) 
+	values ('Lucas', 123123, 123123, '2020-02-02', 213546),
+            ('Ana', 258258, 2582585, '2015-02-02', 65645),
+            ('José', 4752754, 32574, '2120-02-02', 9897);
+
+DELETE c, cv
+FROM conta c
+JOIN contavinculada cv ON c.idConta = cv.CONTA_idCONTA
+WHERE cv.CONTA_idCONTA IS NOT NULL;
+
+
+update cliente set nome = upper(nome)
+where telefone is not null;
+
+
+rollback;
+commit;
