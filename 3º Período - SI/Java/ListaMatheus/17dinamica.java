@@ -1,9 +1,9 @@
 public int quantidade() {
-    int count = 0;
+    int cont = 0;
     No atual = inicio;
     while (atual != null) {
-        count++;
+        cont++;
         atual = atual.proximo;
     }
-    return count;
+    return cont;
 }
