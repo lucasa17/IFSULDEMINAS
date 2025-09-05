@@ -2,6 +2,7 @@ const nome = "Lucas"
 const altura = 1.70
 const filhos = 0
 const casado = false
+const hobbies = ['Futebol', 'Corrida', 'Bike']
 
 const idade = function(dia, mes, ano){
     if(dia == undefined || mes == undefined || ano == undefined){
@@ -18,14 +19,13 @@ const idade = function(dia, mes, ano){
 }
 console.log(`Idade do ${nome}`, idade(16, 4, 2006), idade())
 
-const hobbies = ['Futebol', 'Corrida', 'Bike']
-
 //JSON JavaScript Objection Notation
 const lucas = {
     nome: nome,
     altura: altura,
     filhos: filhos,
     casado: casado,
-    idade: idade(),
+    idade: idade(16, 4, 2006),
     hobbies: hobbies
 }
+console.log(lucas)
