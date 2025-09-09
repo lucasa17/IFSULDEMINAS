@@ -28,4 +28,18 @@ const lucas = {
     idade: idade(16, 4, 2006),
     hobbies: hobbies
 }
-console.log(lucas)
+console.log("Tipo usuário: ", typeof lucas)
+console.log(`Tipo nome: ${typeof lucas.nome}`)
+console.log(`Tipo altura: ${typeof lucas.altura}`)
+console.log(`Tipo filhos: ${typeof lucas.filhos}`)
+console.log(`Tipo casado: ${typeof lucas.casado}`)
+console.log(`Tipo idade obj: ${typeof lucas.idade}`, `Tipo idade ori: ${typeof idade}`)
+console.log(`Tipo hobbies: ${typeof lucas.hobbies}`, `Construtor hobbies${lucas.hobbies.constructor}`)
+
+
+
+
+
+console.log("Usuário: ", lucas)
+console.log("Tipo: ", lucas.constructor)
+
