@@ -2,3 +2,10 @@ img{
     max-width: 50px;
     max-height: 50px;
 }
+
+.social {
+    text-decoration: none;
+    display: inline-flex; /*Texto e a imagem no mesmo eixo*/
+    align-items: center; /*Centraliza itens*/
+    gap: 3px; /*Espaçamento*/
+}

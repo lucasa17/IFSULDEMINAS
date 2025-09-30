@@ -12,10 +12,11 @@
         <img src="Imagens/foto.jpg" alt="Foto 3 x 4 do Lucas">
         <h1>Lucas Silva da Rosa</h1>
         <a href="tel:(35) 99799-1292">(12) 99799-1292</a>
+        <a href="mailto:lucassilva04.rosa@gmail.com">lucassilva04.rosa@gmail.com</a>
     </header>
-
+    <hr>
     <main>
-        <section>
+        <section id="main">
             <header>
                 <h1>Experiência e Objetivos</h1>
             </header>
@@ -26,12 +27,12 @@
                     - Fluente em inglês
                 </p>
                 <p>
-                    Atuar na área de desenvolvimento Back-End para soluções
+                    Busca atuar na área de desenvolvimento Back-End para soluções
                 </p>    
             </div>    
         </section>
 
-        <section>
+        <section id="grade">
                 <header>
                     <h1>Formação</h1>
                 </header>
@@ -63,7 +64,7 @@
                     </p>
                 </div>
         </section>
-        <section>
+        <section id="experience">
             <header>
                 <h1>Experiência</h1>
             </header>
@@ -99,13 +100,7 @@
                     </p>
                 </div>
         </section>
-
-        <section>
-            <header>
-                <h1>Hobbies</h1>
-            </header>
-        </section>
-        <section>
+        <section id="languages">
             <header>
                 <h1>Idiomas</h1>
                 <div>
@@ -117,21 +112,69 @@
                 </div>
             </header>
         </section>
-        <section>            
+        <section id="media">            
             <header>
                 <h1>Redes</h1>
             </header>
-            <span>
+            <a href="https://www.linkedin.com/in/lucas-silva-da-rosa-17997721a/" target="_blank"><span class="social">
                 <img src="Imagens/linkedin.png" alt="Linkedin logo">
+                Linkedin
             </span>
-            <span>
+            </a>
+            <a href="" target="_blank">
+            <span class="social">
                 <img src="Imagens/instagram.png" alt="Instagram logo">
+                Instagram
             </span>
+            </a>
+        </section>
+        <section id="#hobbies">
+            <header>
+                <h1>Hobbies</h1>
+            </header>
+            <div>
+                <ol>
+                    <li>Futebol</li>
+                    <li>Xadrez</li>
+                    <li>Videogame</li>
+                </ol>
+            </div>
         </section>
     </main>
 
-    <aside></aside>
+    <aside>
+        <header>
+            <h4>Sumário</h4>
+        </header>
+        <nav>
+            <a href="#main">Main</a>
+            <a href="#grade">Formação</a>
+            <a href="#experience">Experiência</a>
+            <a href="#languages">Idiomas</a>
+            <a href="#media">Redes Sociais</a>
+            <a href="#hobbies">Hobbies</a>
+        </nav>
+    </aside>
 
-    <footer></footer>
+    <footer>
+        <hr>
+        <header>
+            <h4>Currículo Lucas</h4>
+            
+            <!-- Informações do autor-->
+            <address>
+                <p>Lucas Silva da Rosa</p>
+                <p><a href="tel:12997991292">(12) 99799-1292</a></p>
+                <p>Avenida RicardoAnnoni Filho, 1037</p>
+            </address>
+        </header>
+        <p id="rights">
+                Todos os direitos reservados. Machado-MG - 
+        </p>
+
+        <script>
+            const par = document.getElementById("rights");
+            par.innerHTML += new Date().getFullYear();
+        </script>
 </body>
 </html>
