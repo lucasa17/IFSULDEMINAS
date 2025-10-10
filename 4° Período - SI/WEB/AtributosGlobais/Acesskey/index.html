@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesskey</title>
+
+    <style>
+        div{
+            margin: 10px;
+            display: inline;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <button id="voltar" type="button" accesskey="V">Voltar</button>
+    </div>
+
+    <div>
+        <button type="button" accesskey="C">Cadastrar</button>
+    </div>
+
+    <script>
+        const buttonVoltar = document.getElementById('voltar');
+        buttonVoltar.addEventListener('click', e => {
+            alert("Voltei");
+        })
+    </script>
+</body>
+</html>

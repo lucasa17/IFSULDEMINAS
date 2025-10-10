@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Editable</title>
+</head>
+<body>
+    <p id="p-editavel" spellcheck="false" contenteditable="true">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora harum in, suscipit nemo aliquam iusto? Provident odit porro magni eaque, quam voluptatum, accusantium adipisci assumenda voluptate quaerat sint tenetur rem?
+
+    </p>
+    <p id="p-nao-editavel" spellcheck="true" contenteditable="true">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora harum in, suscipit nemo aliquam iusto? Provident odit porro magni eaque, quam voluptatum, accusantium adipisci assumenda voluptate quaerat sint tenetur rem?
+
+    </p>
+
+    <script>
+        const pEditavel = document.getElementById("p-editavel");
+        const pNaoEditavel = document.getElementById("p-nao-editavel");
+
+        pEditavel.addEventListener('focusout', e =>{
+            //alert(pEditavel.innerHTML);
+            pNaoEditavel.innerHTML = pEditavel.innerHTML;
+        })
+    </script>
+</body>
+</html>
