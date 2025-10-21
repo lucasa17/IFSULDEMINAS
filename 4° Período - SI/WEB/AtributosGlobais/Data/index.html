@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributo Global data-*</title>
+</head>
+<body>
+    <h1>Meu Select</h1>
+    <select name="carros" id="carros">
+        <option data-pk="-1" value="default">Escolha um carro</option>
+        <option data-pk="1" data-fk="2" value="celta">Celta</option>
+        <option data-pk="2" value="fiesta">Fiesta</option>
+        <option data-pk="3" value="gol">Gol</option>
+        <option data-pk="4" value="palio">Palio</option>
+        <option data-pk="5" value="uno">Uno</option>
+    </select>
+
+    <script>
+        document.querySelectorAll('option').forEach(opt => console.log(opt.value ,'PK:', opt.dataset.pk, 'FK:', opt.dataset.fk))
+    </script>
+</body>
+</html>

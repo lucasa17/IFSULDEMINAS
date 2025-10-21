@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>draggable e dropzone</title>
+
+    <style>
+        p{
+            background-color: lightgray;
+            display: inline;
+        }
+        div{
+            margin-top: 25px;
+            width:150px;
+            height: 150px;
+            background-color: aqua;
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <p id="par" draggable="true">
+        Um texto para ser clicado e arrastado.
+    </p>
+    <div id="drop" dropzone="copy">
+
+    </div>
+
+    <script>
+        const par = document.getElementById('par');
+        const drop = document.getElementById('drop');
+
+        par.addEventListener('dragstart', event => {
+            event.dataTransfer.setData('Texto', event.target.id);
+        });
+
+        drop.addEventListener('dragover', event => {
+            event.preventDefault();
+        });
+
+        drop.addEventListener('drop', event => {
+            const idPar = event.dataTransfer.getData('Texto');
+            const element = document.getElementById(idPar);
+            const action = drop.getAttribute('dropzone');
+        
+
+            if (action == 'copy') {
+                const clonePar = element.cloneNode(true);
+                clonePar.removeAttribute('draggable');  
+                drop.appendChild(clonePar);
+            } else if (action == 'move') {
+                drop.appendChild(element);
+            }
+        });
+    </script>
+</body>
+</html>
