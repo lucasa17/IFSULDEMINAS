@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden</title>
+</head>
+<body>
+    <div>
+        <span>Saldo: </span>
+        <span id="saldo">R$ 2.000</span>
+    </div>
+
+    <button id="button" type="button">Ocultar</button>
+
+    <script>
+        const saldo = document.getElementById('saldo');  
+        const button = document.getElementById('button'); 
+
+        button.addEventListener('click', () => {
+            const isHidden = saldo.hasAttribute('hidden'); 
+            if (isHidden) {
+                saldo.removeAttribute('hidden');
+                button.innerHTML = "Ocultar";
+            } else {
+                saldo.setAttribute('hidden', 'true'); 
+                button.innerHTML = "Exibir";
+            }
+        });
+    </script>
+</body>
+</html>
