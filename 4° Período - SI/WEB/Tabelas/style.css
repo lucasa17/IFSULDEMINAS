@@ -1,0 +1,34 @@
+table, th, td{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+th{
+    border-bottom: 1px solid lightgray;
+}
+
+thead{
+    background-color: green;
+    color: white;
+}
+
+.idade{
+    text-align: center;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.nome{
+    border-right: 1px solid lightgray;
+}
+
+tfoot tr td{
+    border-bottom: 1px solid black;
+}
+
+tfoot{
+    font-size: 12px;
+}
