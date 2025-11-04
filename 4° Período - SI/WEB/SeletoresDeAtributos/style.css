@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  width: 250px;
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.product-card p {
+  margin: 0 0 10px;
+}
+
+.filter-section {
+  margin-bottom: 30px;
+}
+
+.filter-section input[type="search"] {
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.filter-section label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+[data-category]:hover {
+  transform: scale(1.05);
+}
+
+[data-category]{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #d1f7d6;
+}
+
+[data-sale="true"]{
+    border: 2px solid red;
+}
+
+[data-id^="used"]{
+    background: #e3dfdf;
+}
+
+[src$=".png"], [src$=".jpg"]{
+    border: 2px solid #ffff01;
+}
+
+[data-category*="elet"]{
+    border: 2px solid orange;
+}
+
+[class~="luxo"]{
+    font-weight: bold;
+    background: #00F;
+    color: #fff;
+    padding: 0px 5px;
+}
+
+[lang|="en"]{
+    font-style: italic;
+}
