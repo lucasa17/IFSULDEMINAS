@@ -1,0 +1,36 @@
+div.externa{
+    width: 300px;
+    height: 200px;
+    background: violet;
+
+    padding: 25px 0px 0px 25px;
+    margin: 20px 0px 0px 20px;
+
+    border: solid blue;
+    border-width: 5px 1px;
+    border-left: 10px dotted blue;
+
+}
+
+div.interna{
+    width: 300px;
+    height: 200px;
+    background: lightsalmon;
+
+    padding: 10px 0px 0px 10px;
+    margin-left: 10px;
+
+    border: solid blueviolet;
+    border-width: 5px 1px;
+    border-left: 10px dotted blueviolet;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    border: solid red;
+}
+
+h1{
+    display: none;
+}
