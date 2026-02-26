@@ -4,7 +4,27 @@ const valorInput = document.querySelector('#montante');
 const balancoH1 = document.querySelector('#balanco');
 const receitaP = document.querySelector('#din-positivo');
 const despesaP = document.querySelector('#din-negativo');
+const transacoesUl = document.querySelector('#transacoes')
 
+
+// Vamos usar o WebStorage para persistir as transações
+
+// Chave de acesso aos dados
+const chave_transacoes_ls = 'transacoes';
+
+// Vetor para armazenar as transacoes
+let transacoesSalvas;
+
+// Inicializa transacoes salvas
+try{
+    transacoesSalvas = JSON.parse(localStorage.getItem(chave_transacoes_ls));
+} catch (error){
+    transacoesSalvas = [];
+}
+
+if(transacoesSalvas == null){
+    transacoesSalvas = [];
+}
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -32,9 +52,12 @@ form.addEventListener("submit", (event) => {
 
     somaAoSaldo(transacao);
     somaReceitaDespesa(transacao);
+    addTransacaoAoDOM(transacao);
 
     descInput.value = "";
     valorInput.value = "";
+    transacoesSalvas.push(transacao);
+    localStorage.setItem(chave_transacoes_ls, JSON.stringify(transacoesSalvas));
 }); // Fim addEventListener form 
 
 function somaAoSaldo(transacao){
@@ -58,4 +81,24 @@ function somaReceitaDespesa(transacao){
     valor += Math.abs(valorTransacao);
 
     elementoAlterado.innerHTML = `${substituir}${valor}`;
+}
+
+function addTransacaoAoDOM(transacao){
+    const sinal = transacao.valor < 0 ? "-" : "";
+    const classeCSS = transacao.valor < 0 ? "negativo" : "positivo";
+
+    let valorTransacao = Math.abs(transacao.valor);
+
+    //cria um elemento li
+    const li = document.createElement('li');
+    
+    //adiciona uma classe ao elemento
+    li.classList.add(classeCSS);
+
+    li.innerHTML = `${transacao.descricao} 
+                    <span>${sinal}R$${valorTransacao}</span>
+                    <button class="delete-btn">X</button>`;
+
+    transacoesUl.append(li);
+    
 }
