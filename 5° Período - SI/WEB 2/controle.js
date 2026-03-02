@@ -97,8 +97,36 @@ function addTransacaoAoDOM(transacao){
 
     li.innerHTML = `${transacao.descricao} 
                     <span>${sinal}R$${valorTransacao}</span>
-                    <button class="delete-btn">X</button>`;
+                    <button class="delete-btn"
+                    onclick="deletaTransacao(${transacao.id})">X</button>`;
 
     transacoesUl.append(li);
     
 }
+
+function carregarDados(){
+    transacoesUl.innerHTML = "";
+    balancoH1.innerHTML = "R$0.00";
+    receitaP.innerHTML = "+ R$0.00";
+    despesaP.innerHTML = "- R$0.00";
+
+    for(let i = 0; i < transacoesSalvas.length; i++){
+        somaAoSaldo(transacoesSalvas[i]);
+        somaReceitaDespesa(transacoesSalvas[i]);
+        addTransacaoAoDOM(transacoesSalvas[i]);
+    }
+}
+
+function deletaTransacao(idTransacacao){
+    const transacaoIndex = transacoesSalvas.findIndex(
+        transacao => transacao.id == idTransacacao
+    );
+
+    transacoesSalvas.splice(transacaoIndex, 1);
+
+    localStorage.setItem(chave_transacoes_ls, JSON.stringify(transacoesSalvas));
+
+    carregarDados();
+}
+
+carregarDados();
